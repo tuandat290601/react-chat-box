@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../components/Loading/Loading";
 import { auth } from "../firebase/firebase";
 
 const AuthContext = React.createContext();
@@ -25,7 +26,7 @@ export default function AuthProvider({ children }) {
   }, [navigate]);
   return (
     <AuthContext.Provider value={{ currentUser }}>
-      {loading ? <h1>Loading</h1> : children}
+      {loading ? <Loading/> : children}
     </AuthContext.Provider>
   );
 }
